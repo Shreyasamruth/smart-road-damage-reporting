@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+sqlalchemy
+pydantic
+python-multipart
+pillow
+ultralytics
+tensorflow
+numpy
+exifread
+passlib[bcrypt]
+python-jose[cryptography]
+python-dotenv
