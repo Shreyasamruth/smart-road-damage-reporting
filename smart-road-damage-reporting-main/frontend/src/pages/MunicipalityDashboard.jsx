@@ -23,8 +23,8 @@ const MunicipalityDashboard = () => {
     const fetchData = async () => {
         try {
             const [statsRes, complaintsRes] = await Promise.all([
-                axios.get('http://localhost:8000/api/analytics'),
-                axios.get('http://localhost:8000/api/complaints')
+                axios.get(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/api/analytics`),
+                axios.get(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/api/complaints`)
             ]);
             setStats(statsRes.data);
             setComplaints(complaintsRes.data);
@@ -39,7 +39,7 @@ const MunicipalityDashboard = () => {
         try {
             const formData = new FormData();
             formData.append('status', newStatus);
-            await axios.patch(`http://localhost:8000/api/complaints/${id}`, formData);
+            await axios.patch(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/api/complaints/${id}`, formData);
             fetchData();
         } catch (err) {
             alert("Failed to update status");
@@ -271,13 +271,13 @@ const MunicipalityDashboard = () => {
                                             <td className="px-8 py-6">
                                                 {c.image_path ? (
                                                     <a
-                                                        href={`http://localhost:8000/${c.image_path}`}
+                                                        href={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/${c.image_path}`}
                                                         target="_blank"
                                                         rel="noopener noreferrer"
                                                         className="w-12 h-12 block group relative overflow-hidden rounded-lg border border-white/10"
                                                     >
                                                         <img
-                                                            src={`http://localhost:8000/${c.image_path}`}
+                                                            src={`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/${c.image_path}`}
                                                             alt="Road Damage"
                                                             className="w-full h-full object-cover transition-transform group-hover:scale-110"
                                                         />

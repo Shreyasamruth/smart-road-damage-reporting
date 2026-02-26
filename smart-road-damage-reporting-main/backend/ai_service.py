@@ -6,7 +6,7 @@ import io
 import os
 
 # Path to the trained YOLOv8 model
-MODEL_PATH = r"C:\Users\PUNITH ARADHYA P\OneDrive\Desktop\roads\runs\segment\train7\weights\best.pt"
+MODEL_PATH = os.path.join(os.path.dirname(__file__), "model_weights", "best.pt")
 
 # Initialize model
 if os.path.exists(MODEL_PATH):

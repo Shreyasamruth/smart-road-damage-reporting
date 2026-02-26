@@ -79,7 +79,7 @@ const CitizenPortal = () => {
         data.append('file', file);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/validate-image', data);
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/api/validate-image`, data);
             setAiResult(response.data.ai_result);
 
             // CRITICAL: PRIORITIZE PHOTO GPS DATA
@@ -113,7 +113,7 @@ const CitizenPortal = () => {
         data.append('longitude', location.lng);
 
         try {
-            const response = await axios.post('http://localhost:8000/api/report', data);
+            const response = await axios.post(`${import.meta.env.VITE_API_BASE_URL || 'http://localhost:8000'}/api/report`, data);
             alert(`Success! Complaint ID: ${response.data.complaint_id}`);
             setStep(4);
         } catch (error) {
