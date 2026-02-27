@@ -1,0 +1,12 @@
+{
+    "version": 2,
+    "buildCommand": "cd \"smart-road-damage-reporting-main/frontend\" && npm install && npm run build",
+    "outputDirectory": "smart-road-damage-reporting-main/frontend/dist",
+    "framework": "vite",
+    "rewrites": [
+        {
+            "source": "/(.*)",
+            "destination": "/index.html"
+        }
+    ]
+}
