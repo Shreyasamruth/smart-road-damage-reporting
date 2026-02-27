@@ -29,6 +29,7 @@ const CitizenPortal = () => {
     const [preview, setPreview] = useState(null);
     const [loading, setLoading] = useState(false);
     const [aiResult, setAiResult] = useState(null);
+    const [apiError, setApiError] = useState(false);
     const [location, setLocation] = useState({ lat: 12.9716, lng: 77.5946 }); // Default to Bangalore
     const [formData, setFormData] = useState({
         name: '',
@@ -98,6 +99,8 @@ const CitizenPortal = () => {
             }
         } catch (error) {
             console.error("Error validating image:", error);
+            setApiError(true);
+            setAiResult({ status: "error", result: "Backend Connection Error" });
         } finally {
             setLoading(false);
         }
@@ -214,18 +217,22 @@ const CitizenPortal = () => {
                                     </div>
                                 ) : (
                                     <>
-                                        <div className={`p-6 rounded-3xl flex items-center gap-4 ${aiResult?.result === "Road Damage Detected" ? 'bg-emerald-500/10 border border-emerald-500/30' : 'bg-red-500/10 border border-red-500/30'}`}>
-                                            {aiResult?.result === "Road Damage Detected" ? (
+                                        <div className={`p-6 rounded-3xl flex items-center gap-4 ${apiError ? 'bg-red-500/20 border border-red-500/50' : aiResult?.result === "Road Damage Detected" ? 'bg-emerald-500/10 border border-emerald-500/30' : 'bg-slate-500/10 border border-white/10'}`}>
+                                            {apiError ? (
+                                                <AlertCircle size={32} className="text-red-400" />
+                                            ) : aiResult?.result === "Road Damage Detected" ? (
                                                 <CheckCircle2 size={32} className="text-emerald-400" />
                                             ) : (
-                                                <AlertCircle size={32} className="text-red-400" />
+                                                <div className="w-8 h-8 border-2 border-blue-500/20 border-t-blue-500 rounded-full animate-spin" />
                                             )}
                                             <div className="flex-1">
-                                                <p className="font-bold text-lg">{aiResult?.result || "Analyzing..."}</p>
-                                                <p className="text-sm opacity-70">
-                                                    Detection Confidence: {aiResult?.confidence ? (aiResult.confidence * 100).toFixed(1) : "0.0"}%
+                                                <p className="font-bold text-lg">
+                                                    {apiError ? "Backend Server Offline" : aiResult?.result || "Analyzing..."}
                                                 </p>
-                                                {!aiResult?.gps_data && (
+                                                <p className="text-sm opacity-70">
+                                                    {apiError ? "The AI service is unreachable. Ensure the backend is running." : `Detection Confidence: ${aiResult?.confidence ? (aiResult.confidence * 100).toFixed(1) : "0.0"}%`}
+                                                </p>
+                                                {!aiResult?.gps_data && !apiError && (
                                                     <p className="text-xs mt-2 text-amber-400 font-medium">⚠️ Photo capture location not found. Defaulting to Bangalore or your picker selection.</p>
                                                 )}
                                             </div>
