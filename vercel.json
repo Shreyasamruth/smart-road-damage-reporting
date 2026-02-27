@@ -1,18 +1,15 @@
 {
     "version": 2,
-    "buildCommand": "mkdir -p deploy && cd smart-road-damage-reporting-main/frontend && npm install && npm run build && cp -r dist/* ../../deploy/ && cd ../../ && cp -r api deploy/",
-    "outputDirectory": "deploy",
+    "buildCommand": "cd smart-road-damage-reporting-main/frontend && npm install && npm run build",
+    "outputDirectory": "smart-road-damage-reporting-main/frontend/dist",
+    "framework": "vite",
     "rewrites": [
         {
             "source": "/api/(.*)",
-            "destination": "/api/index.py"
+            "destination": "/api/debug.py"
         },
         {
-            "source": "/uploads/(.*)",
-            "destination": "/api/index.py"
-        },
-        {
-            "source": "/((?!api|uploads).*)",
+            "source": "/((?!api).*)",
             "destination": "/index.html"
         }
     ]
