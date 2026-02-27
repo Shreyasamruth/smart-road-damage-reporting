@@ -23,18 +23,12 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Directory for uploads - use /tmp on Vercel
-IS_VERCEL = os.environ.get("VERCEL") == "1"
-UPLOAD_DIR = "/tmp/uploads" if IS_VERCEL else "uploads"
-
+# Directory for uploads
+UPLOAD_DIR = "uploads"
 if not os.path.exists(UPLOAD_DIR):
     os.makedirs(UPLOAD_DIR)
 
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
-
-@app.get("/api/health")
-async def health_check():
-    return {"status": "healthy", "environment": "vercel" if IS_VERCEL else "local"}
 
 # Dependency
 def get_db():
@@ -79,7 +73,7 @@ async def create_complaint(
         with open(file_path, "wb") as buffer:
             buffer.write(contents)
         
-        # Run AI inference
+        # Run AI inference to get confidence and metadata (bbox)
         import json
         ai_result = ai_service.classify_road_damage(contents)
         confidence = ai_result.get("confidence", 0.0)
