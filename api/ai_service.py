@@ -1,41 +1,39 @@
-from ultralytics import YOLO
 import numpy as np
 from PIL import Image
 import exifread
 import io
 import os
 
+# AI Model Initialization with Safety Fallback for Vercel
 try:
     from ultralytics import YOLO
-    # Path to the trained YOLOv8 model
+    # Path to the trained YOLOv8 model in the same directory
     MODEL_PATH = os.path.join(os.path.dirname(__file__), "yolov8n-seg.pt")
 
-    # Initialize model
     if os.path.exists(MODEL_PATH):
         model = YOLO(MODEL_PATH)
     else:
+        # Fallback to downloading a base model if specific weight is missing
         model = YOLO('yolov8n-seg.pt')
     AI_AVAILABLE = True
 except Exception as e:
-    print(f"⚠️ AI Model loading failed (likely size limits): {e}")
+    print(f"⚠️ AI Model loading failed (likely Vercel size limits): {e}")
     AI_AVAILABLE = False
 
 def classify_road_damage(image_bytes):
     """
-    Classifies the image for road damage with a demo fallback.
+    Classifies the image for road damage. If AI is unavailable, uses a demo fallback.
     """
     if not AI_AVAILABLE:
-        # Fallback for Vercel demo
+        # Fallback for demonstration when running in limited environments
         return {
             "status": "success",
             "result": "Road Damage Detected (Demo Mode)",
             "type": "Pothole",
             "confidence": 0.95,
-            "bbox": [100, 100, 300, 300]
+            "bbox": [100, 100, 200, 200]
         }
-    """
-    Classifies the image for road damage using YOLOv8 Pothole Segmentation.
-    """
+
     try:
         img = Image.open(io.BytesIO(image_bytes))
         width, height = img.size
@@ -48,7 +46,7 @@ def classify_road_damage(image_bytes):
                 "confidence": 0.0
             }
         
-        # Run inference
+        # Run inference using YOLO
         results = model.predict(source=img, conf=0.25, verbose=False)
         
         if not results or len(results[0].boxes) == 0:
@@ -59,15 +57,14 @@ def classify_road_damage(image_bytes):
                 "confidence": 0.0
             }
         
-        # Get detections
+        # Get the detection with the highest confidence
         boxes = results[0].boxes
-        # Get the one with highest confidence
         max_conf_idx = np.argmax(boxes.conf.cpu().numpy())
         confidence = float(boxes.conf[max_conf_idx])
         class_id = int(boxes.cls[max_conf_idx])
         label = results[0].names[class_id]
         
-        # Get coordinates [x1, y1, x2, y2]
+        # Coordinates: [x1, y1, x2, y2]
         coords = boxes.xyxy[max_conf_idx].cpu().numpy().tolist()
         
         return {
@@ -79,7 +76,7 @@ def classify_road_damage(image_bytes):
         }
         
     except Exception as e:
-        print(f"AI Classification failed: {e}")
+        print(f"AI Inference failed: {e}")
         return {
             "status": "error",
             "message": str(e)
@@ -95,7 +92,6 @@ def extract_gps_data(image_bytes):
         exif_info = img._getexif()
         
         if not exif_info:
-            print("No EXIF data found in image.")
             return None
 
         gps_info = {}
@@ -107,7 +103,6 @@ def extract_gps_data(image_bytes):
                     gps_info[sub_tag] = value[t]
 
         if not gps_info:
-            print("No GPS info found in EXIF.")
             return None
 
         def _convert_to_degrees(value):
@@ -125,7 +120,6 @@ def extract_gps_data(image_bytes):
             if gps_info.get('GPSLongitudeRef', 'E') != 'E':
                 lon = -lon
 
-            print(f"Extracted GPS: {lat}, {lon}")
             return {"latitude": lat, "longitude": lon}
 
     except Exception as e:

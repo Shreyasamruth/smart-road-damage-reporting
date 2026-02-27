@@ -24,11 +24,17 @@ app.add_middleware(
 )
 
 # Directory for uploads
-UPLOAD_DIR = "uploads"
+IS_VERCEL = os.environ.get("VERCEL") == "1"
+UPLOAD_DIR = "/tmp/uploads" if IS_VERCEL else "uploads"
+
 if not os.path.exists(UPLOAD_DIR):
     os.makedirs(UPLOAD_DIR)
 
 app.mount("/uploads", StaticFiles(directory=UPLOAD_DIR), name="uploads")
+
+@app.get("/api/health")
+async def health_check():
+    return {"status": "healthy", "environment": "vercel" if IS_VERCEL else "local"}
 
 # Dependency
 def get_db():
