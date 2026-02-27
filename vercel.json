@@ -1,23 +1,12 @@
 {
     "version": 2,
-    "functions": {
-        "smart-road-damage-reporting-main/backend/main.py": {
-            "runtime": "@vercel/python",
-            "memory": 1024,
-            "maxDuration": 60
-        }
-    },
     "buildCommand": "cd smart-road-damage-reporting-main/frontend && npm install && npm run build",
     "outputDirectory": "smart-road-damage-reporting-main/frontend/dist",
     "framework": "vite",
     "rewrites": [
         {
             "source": "/api/(.*)",
-            "destination": "/smart-road-damage-reporting-main/backend/main.py"
-        },
-        {
-            "source": "/uploads/(.*)",
-            "destination": "/smart-road-damage-reporting-main/backend/main.py"
+            "destination": "/api/index.py"
         },
         {
             "source": "/(.*)",
