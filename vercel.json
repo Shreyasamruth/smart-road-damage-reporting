@@ -13,7 +13,7 @@
             "destination": "/api/index.py"
         },
         {
-            "source": "/(.*)",
+            "source": "/((?!api|uploads).*)",
             "destination": "/index.html"
         }
     ]
