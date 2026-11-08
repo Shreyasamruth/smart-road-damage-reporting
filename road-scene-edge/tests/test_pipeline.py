@@ -96,3 +96,29 @@ def test_accuracy_perfect_and_empty(tmp_path):
         def run(self,image,threshold):
             return np.empty((0,6)),0.01
     assert accuracy(Empty(),[image],tmp_path)['mAP50_95']==0
+
+
+def test_partial_annotation_gradients():
+    import torch
+    from partial_training import MaskedBCE,annotation_mask
+    logits=torch.zeros((2,8,4),requires_grad=True)
+    criterion=MaskedBCE();criterion.mask=annotation_mask(['traffic_0.jpg','rdd_1.jpg'])
+    criterion(logits,torch.zeros_like(logits)).sum().backward()
+    assert (logits.grad[0,:,3]==0).all()
+    assert (logits.grad[1,:,:3]==0).all()
+    assert (logits.grad[0,:,:3]>0).all()
+    assert (logits.grad[1,:,3]>0).all()
+    with pytest.raises(ValueError):annotation_mask(['unknown.jpg'])
+
+
+def test_source_aware_evaluation_ignores_unlabelled_classes(tmp_path):
+    from roadscene import accuracy
+    (tmp_path/'labels/test').mkdir(parents=True)
+    image=tmp_path/'rdd_example.jpg';cv2.imwrite(str(image),np.zeros((100,100,3),np.uint8))
+    (tmp_path/'labels/test/rdd_example.txt').write_text('3 .5 .5 .2 .2')
+    class Predictor:
+        def run(self,image,threshold):
+            return np.array([[40,40,60,60,.9,3],[0,0,90,90,.99,0]]),.01
+    result=accuracy(Predictor(),[image],tmp_path,source_aware=True)
+    assert result['mAP50_95']==pytest.approx(1)
+    assert result['per_class_mAP50_95']['vehicle'] is None
