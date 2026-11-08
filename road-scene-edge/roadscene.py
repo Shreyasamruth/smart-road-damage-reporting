@@ -215,7 +215,7 @@ def quantize(args):
     pre.unlink()
 
 
-def accuracy(detector, files, root):
+def accuracy(detector, files, root, source_aware=False):
     import cv2
     from pycocotools.coco import COCO
     from pycocotools.cocoeval import COCOeval
@@ -231,6 +231,10 @@ def accuracy(detector, files, root):
             annotations.append({'id':len(annotations)+1,'image_id':i,'category_id':int(c), 'bbox':box,'area':box[2]*box[3],'iscrowd':0})
         detections, _ = detector.run(image, .001)
         for x1,y1,x2,y2,score,cls in detections:
+            if source_aware:
+                allowed = [3] if path.name.startswith('rdd_') else [0,1,2]
+                if int(cls) not in allowed:
+                    continue
             predictions.append({'image_id':i,'category_id':int(cls),'bbox':[float(x1),float(y1),float(x2-x1),float(y2-y1)],'score':float(score)})
     gt = COCO()
     gt.dataset = {'images':metadata,'annotations':annotations,'categories':[{'id':i,'name':n} for i,n in enumerate(NAMES)],'info':{}}
@@ -256,6 +260,7 @@ def benchmark(args):
         raise ValueError('Unreadable benchmark image')
     result = {'hardware':{'platform':platform.platform(),'processor':platform.processor(), 'machine':platform.machine(), 'cpu_threads':args.threads},
               'versions':{n:importlib.metadata.version(n) for n in ['numpy','onnxruntime','pycocotools']},
+              'evaluation_scope':'source-aware annotated categories only; NOT fully annotated four-class evaluation' if getattr(args,'source_aware',False) else 'fully annotated four-class evaluation',
               'test_images':len(files),'test_sha256':[digest(p) for p in files],
               'protocol':{'warmup':args.warmup,'iterations':args.iterations,'provider':'CPUExecutionProvider','batch':1,'accuracy_confidence':.001,'COCO_max_detections':100}, 'models':{}}
     sizes = []
@@ -276,7 +281,7 @@ def benchmark(args):
             'input':[1,3,detector.size,detector.size], 'inference_median_ms':float(np.median(inference)),
             'inference_p95_ms':float(np.percentile(inference,95)), 'inference_FPS':1000/float(np.mean(inference)),
             'pipeline_mean_ms':float(np.mean(pipeline)),'pipeline_FPS':1000/float(np.mean(pipeline)),
-            'accuracy':accuracy(detector,files,args.dataset)}
+            'accuracy':accuracy(detector,files,args.dataset,getattr(args,'source_aware',False))}
     write_json(args.output,result)
     fp, qi = result['models']['FP32'],result['models']['INT8']
     lines = ['| Model | mAP50 | mAP50–95 | MiB | Median inference ms | p95 ms | Inference FPS | Pipeline FPS |', '|---|---:|---:|---:|---:|---:|---:|---:|']
@@ -342,7 +347,7 @@ def main():
     p = sub.add_parser('train'); p.add_argument('--data',required=True); p.add_argument('--weights',default='yolo26n.pt'); p.add_argument('--epochs',type=int,default=80); p.add_argument('--size',type=int,default=640); p.add_argument('--batch',type=int,default=8); p.add_argument('--device',default='cpu'); p.add_argument('--workers',type=int,default=0); p.set_defaults(func=train)
     p = sub.add_parser('export'); p.add_argument('--weights',required=True); p.add_argument('--size',type=int,default=640); p.add_argument('--output',default='models/roadscene_fp32.onnx'); p.set_defaults(func=export)
     p = sub.add_parser('quantize'); p.add_argument('--model',required=True); p.add_argument('--dataset',required=True); p.add_argument('--samples',type=int,default=300); p.add_argument('--output',default='models/roadscene_int8.onnx'); p.set_defaults(func=quantize)
-    p = sub.add_parser('benchmark'); p.add_argument('--fp32',required=True); p.add_argument('--int8',required=True); p.add_argument('--dataset',required=True); p.add_argument('--threads',type=int,default=4); p.add_argument('--warmup',type=int,default=30); p.add_argument('--iterations',type=int,default=200); p.add_argument('--output',default='results/benchmark.json'); p.set_defaults(func=benchmark)
+    p = sub.add_parser('benchmark'); p.add_argument('--source-aware',action='store_true'); p.add_argument('--fp32',required=True); p.add_argument('--int8',required=True); p.add_argument('--dataset',required=True); p.add_argument('--threads',type=int,default=4); p.add_argument('--warmup',type=int,default=30); p.add_argument('--iterations',type=int,default=200); p.add_argument('--output',default='results/benchmark.json'); p.set_defaults(func=benchmark)
     p = sub.add_parser('demo'); p.add_argument('--model',required=True); p.add_argument('--video',required=True); p.add_argument('--output',default='demo/demo.mp4'); p.add_argument('--threads',type=int,default=4); p.add_argument('--conf',type=float,default=.25); p.add_argument('--seconds',type=float,default=30); p.add_argument('--show',action='store_true'); p.set_defaults(func=demo)
     args = parser.parse_args()
     for key in ['threads','iterations','warmup','samples','epochs','size','batch']:
