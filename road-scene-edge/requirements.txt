@@ -1,4 +1,4 @@
-ultralytics>=8.4,<9
+ultralytics==8.4.205
 onnx>=1.17,<2
 onnxruntime>=1.20,<2
 opencv-python>=4.10,<5
