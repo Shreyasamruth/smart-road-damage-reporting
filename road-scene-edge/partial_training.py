@@ -47,11 +47,17 @@ def main():
     p.add_argument('--epochs',type=int,default=20);p.add_argument('--size',type=int,default=320)
     p.add_argument('--batch',type=int,default=16);p.add_argument('--threads',type=int,default=4)
     p.add_argument('--freeze',type=int,default=10);p.add_argument('--name',default='public_baseline')
-    a=p.parse_args();torch.set_num_threads(a.threads)
+    a=p.parse_args()
+    for key in ['epochs','size','batch','threads']:
+        if getattr(a,key) <= 0:p.error(f'--{key} must be positive')
+    if a.freeze < 0:p.error('--freeze must be nonnegative')
+    torch.set_num_threads(a.threads)
     model=YOLO(a.weights);model.add_callback('on_pretrain_routine_end',install_masked_loss)
+    # Device initialization resets PyTorch's thread count; enforce it after setup.
+    model.add_callback('on_train_start',lambda trainer: torch.set_num_threads(a.threads))
     model.train(data=a.data,epochs=a.epochs,imgsz=a.size,batch=a.batch,device='cpu',workers=0,
         seed=42,deterministic=True,freeze=a.freeze,mosaic=0,mixup=0,cutmix=0,copy_paste=0,
-        close_mosaic=0,project='runs',name=a.name,exist_ok=False,patience=0,
+        close_mosaic=0,project=str(Path('runs').resolve()),name=a.name,exist_ok=False,patience=0,
         optimizer='AdamW',lr0=.001,amp=False,plots=False,val=False,save=True)
     # Use fixed-budget last.pt, not best.pt chosen by the unmasked upstream validator.
     # Only source-aware external evaluation is authoritative for this partially labelled corpus.

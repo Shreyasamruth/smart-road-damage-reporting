@@ -1,0 +1,8 @@
+{
+  "frames": 601,
+  "source_fps": 30.03003003003003,
+  "model_sha256": "69d227235b64dcc35f29f3c22afc3b97bb2e327b8ec2b9db17d694bda672846a",
+  "confidence": 0.25,
+  "overlay": "EMA processing FPS; excludes read/write/display and text overlay",
+  "delivery_encoding": "H.264, 1280x720, resized from the original inference render"
+}

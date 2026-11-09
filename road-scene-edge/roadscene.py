@@ -144,7 +144,7 @@ def train(args):
     from ultralytics import YOLO
     result = YOLO(args.weights).train(data=args.data, epochs=args.epochs, imgsz=args.size,
         batch=args.batch, device=args.device, seed=42, deterministic=True, workers=args.workers,
-        project='runs', name='roadscene', exist_ok=False, patience=20, close_mosaic=10)
+        project=str(Path('runs').resolve()), name='roadscene', exist_ok=False, patience=20, close_mosaic=10)
     print(result)
 
 
@@ -215,7 +215,7 @@ def quantize(args):
     pre.unlink()
 
 
-def accuracy(detector, files, root, source_aware=False):
+def accuracy(detector, files, root, source_aware=False, split='test'):
     import cv2
     from pycocotools.coco import COCO
     from pycocotools.cocoeval import COCOeval
@@ -226,7 +226,9 @@ def accuracy(detector, files, root, source_aware=False):
             raise ValueError(f'Unreadable image {path}')
         h,w = image.shape[:2]
         metadata.append({'id':i, 'width':w, 'height':h})
-        for c,x,y,bw,bh in labels(Path(root)/'labels/test'/f'{path.stem}.txt'):
+        if source_aware and not path.name.startswith(('traffic_', 'rdd_')):
+            raise ValueError(f'Unknown annotation source: {path.name}')
+        for c,x,y,bw,bh in labels(Path(root)/'labels'/split/f'{path.stem}.txt'):
             box = [(x-bw/2)*w,(y-bh/2)*h,bw*w,bh*h]
             annotations.append({'id':len(annotations)+1,'image_id':i,'category_id':int(c), 'bbox':box,'area':box[2]*box[3],'iscrowd':0})
         detections, _ = detector.run(image, .001)

@@ -5,9 +5,25 @@ from collections import Counter
 import cv2,yaml
 
 
+def training_entries(audit, root, pedestrian_repeat):
+    if pedestrian_repeat < 1:
+        raise ValueError('pedestrian_repeat must be positive')
+    entries = []
+    for record in audit:
+        if record['split'] != 'train':
+            continue
+        image = root / record['prepared_image']
+        label = root / 'labels/train' / (image.stem + '.txt')
+        has_person = any(line.split()[0] == '2' for line in label.read_text().splitlines() if line.strip())
+        entries.extend([image.as_posix()] * (pedestrian_repeat if has_person else 1))
+    return entries
+
+
 def main():
     p=argparse.ArgumentParser();p.add_argument('--source',required=True);p.add_argument('--output',required=True)
+    p.add_argument('--pedestrian-repeat',type=int,default=1)
     a=p.parse_args();src=Path(a.source);out=Path(a.output).resolve()
+    if a.pedestrian_repeat < 1:p.error('--pedestrian-repeat must be positive')
     if out.exists():raise ValueError('Output already exists')
     records=json.loads((src/'records.json').read_text());audit=[];hashes={};counts={s:Counter() for s in ['train','val','test']}
     for i,r in enumerate(records):
@@ -15,7 +31,9 @@ def main():
         data=path.read_bytes();sha=hashlib.sha256(data).hexdigest()
         if sha in hashes:raise ValueError(f'Duplicate image bytes: {path}, {hashes[sha]}')
         hashes[sha]=str(path)
-        image=cv2.imread(str(path));h,w=image.shape[:2]
+        image=cv2.imread(str(path))
+        if image is None:raise ValueError(f'Unreadable image: {path}')
+        h,w=image.shape[:2]
         boxes=[]
         if r['source']=='traffic':
             mapping={0:2,1:1,2:0,3:0}
@@ -34,8 +52,11 @@ def main():
         counts[r['split']].update(int(b[0]) for b in boxes)
         audit.append({**r,'prepared_image':f"images/{r['split']}/{stem}.jpg",'sha256':sha,'label_sha256':hashlib.sha256((out/'labels'/r['split']/(stem+'.txt')).read_bytes()).hexdigest()})
     config={'path':str(out),'train':'images/train','val':'images/val','test':'images/test','names':{0:'vehicle',1:'two_wheeler',2:'pedestrian',3:'pothole'}}
+    entries=training_entries(audit,out,a.pedestrian_repeat)
+    (out/'train.txt').write_text('\n'.join(entries),encoding='utf-8')
+    config['train']='train.txt'
     (out/'data.yaml').write_text(yaml.safe_dump(config))
-    (out/'audit.json').write_text(json.dumps({'annotation_policy':'partial; use class-masked loss and source-aware evaluation','counts':{s:dict(c) for s,c in counts.items()},'images':audit},indent=2))
+    (out/'audit.json').write_text(json.dumps({'annotation_policy':'partial; use class-masked loss and source-aware evaluation','training_sampling':{'pedestrian_repeat':a.pedestrian_repeat,'entries':len(entries),'unique_images':sum(r['split']=='train' for r in audit)},'counts':{s:dict(c) for s,c in counts.items()},'images':audit},indent=2))
     print(json.dumps({'images':dict(Counter(r['split'] for r in records)),'boxes':{s:dict(c) for s,c in counts.items()}},indent=2))
 
 
