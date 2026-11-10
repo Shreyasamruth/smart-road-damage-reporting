@@ -1,0 +1,808 @@
+{
+  "sha256": "3f05f89e396ec3f685a12d6bbf643de75524f75e1c67655e2a5651d727d79055",
+  "fp32_sha256": "69d227235b64dcc35f29f3c22afc3b97bb2e327b8ec2b9db17d694bda672846a",
+  "format": "QDQ signed INT8, per-channel weights; unsupported operators stay floating point",
+  "quantize_nodes": 206,
+  "calibration": [
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00426.jpg",
+      "sha256": "00a78e573fbff85c1b190997ca6fe18d10c3be5eb9749b19f412b4f874faef94"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00126.jpg",
+      "sha256": "3b7e93ae1f495ca04592dfc23ec892f67003640f74036b8a71e7eb98336883c5"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00024.jpg",
+      "sha256": "ef298a4cbea5c2d118f24cd63b53f641eae5d9d620777f800968723101a94504"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00358.jpg",
+      "sha256": "900f2523b1dd8f92c0c90e6e357680b67ce4e50a7557e9480fc9addb95cc2148"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00381.jpg",
+      "sha256": "5484d149de679b4adf49d9bdc69c39d0320c6e4ee82fde5581b46e61c1a3a172"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00026.jpg",
+      "sha256": "db2c44f0d5de615afc1d7fbbbf3e3ea502d09a2815b923144ccbad46551e292f"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00100.jpg",
+      "sha256": "10bd7e477e5740ccd14a2a1d95378e0b829331b5795fc2d51f03263813b9bc99"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00468.jpg",
+      "sha256": "c945a842ecd21e98a4b438505314c210fad392bd1374e3d28e305316235ff87d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00073.jpg",
+      "sha256": "e942840289030f4c9dfeeb5d5bb22798a5ea1d216d09107164755e539ab239a9"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00043.jpg",
+      "sha256": "13614f0edce799f6af414255ead3bfc160bbc1acd0f1d019401a97fccb709d3f"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00452.jpg",
+      "sha256": "f2f2e7021264e37289e958bd98936c74306241f34ef9bef71e5915cd6ba3a094"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00091.jpg",
+      "sha256": "6d10054dad07c80b502b8f339a9dc586374bf1ba4e61e7764b10a490f6d58f49"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00127.jpg",
+      "sha256": "131ba11cb8b6de1e0528fdc05a3cc370dfc4e330b2373f0d53800312ea25d296"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00471.jpg",
+      "sha256": "c6d78db6ecbc93ea3110693db46852e57ec152a345a302d9777fe4892f2dc949"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00466.jpg",
+      "sha256": "4d1b1e892c54555fef7d69f0ae077259f96f185b386025babc41e0bead5171de"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00383.jpg",
+      "sha256": "4f56f920abb41240035717d4987d55a33a0095996010522d9407cc2327d88c7e"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00346.jpg",
+      "sha256": "e3c0ea93a1bbf8ec33d869fc9149d9b30e0facebd4a6053908054d59c65c73ab"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00319.jpg",
+      "sha256": "ab3dae4a3573b345bc627e464fd312931bc62d783ac70297a990d2f799b34f11"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00032.jpg",
+      "sha256": "15478d71db07b341c40116f52cebce5e4bb0c5fe1c326a397bbe48e11fb066cc"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00318.jpg",
+      "sha256": "f826bce5ee85c2420e8b8eff9571d3cf856347807548beeca8b02879cb9e22d6"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00384.jpg",
+      "sha256": "fc9d9153087bccba15e824a13d2f0c0e57975d807dd44371dbb91fa8067f635d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00028.jpg",
+      "sha256": "0d35a2839fa6fafb13911a99dfa2a53aea2c608f3e78e8e09215024a48c9521a"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00365.jpg",
+      "sha256": "d28ec88263d4b324dd0f26257ba14bb34bf92283a260d9290e2bf81837300dc6"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00134.jpg",
+      "sha256": "d980f310132baa732aaacb562a31b89021dd504faa9a644fc02dccdafe914005"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00057.jpg",
+      "sha256": "94e5994eeb89b3a8455fa202cb77bdfd0ab6bd3065e756b0ebf7ab4b9f0abb24"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00359.jpg",
+      "sha256": "2df6208471456870d25c8d356b0aff4cc1542a55768f8bf1080ebc34d7aa34b6"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00470.jpg",
+      "sha256": "2290eedf73034fbdd5046cb23d81698fe850a15658dea3732488351c22bb01c2"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00312.jpg",
+      "sha256": "d106601908b020898d1127cd8753dde0dcd966145f3821562b859c9f0ba5dc26"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00038.jpg",
+      "sha256": "12f2e89f142786489d0b049e4a601b49a60be8a85c428364f940c9ec3be7938f"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00439.jpg",
+      "sha256": "211f45a1822f7056e0e9275711226cc3400d041ec050a7408eeaff52007fd299"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00142.jpg",
+      "sha256": "1a7e37147dcccce9a3f62761a4b4d6de4fcbba7149fc6dc0dcb431925d244af9"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00108.jpg",
+      "sha256": "7ae476d43ae0dd1a0bf15f151b0c80c2e87610680e63d9e15bf4f41a4c527a31"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00331.jpg",
+      "sha256": "f77a5b04169b285428950fa9d2a2fd1211683367a763cdaa1eb0be94a9d537f5"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00303.jpg",
+      "sha256": "f4a1a274a2b2450bc834fab48d2ec985d7b9e42c3cb6f9f494989f4a5e6c22b0"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00084.jpg",
+      "sha256": "49840f7093b672abf7410dd5ab2b53f67ba12ae09ee30c840706efed2cb12d38"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00029.jpg",
+      "sha256": "7fd5f47c722693c00f3e56a0f643bc1867d2f94c929c636e67f9b6f26d035584"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00367.jpg",
+      "sha256": "1b8fd6c915221e7f83b637e7db972f6741467d12ce9500f8239e830deee973f2"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00444.jpg",
+      "sha256": "728ddce5f0fd08982c196b3f2cf5e2aba38ec8c95319c7023784f14ecf9efd12"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00007.jpg",
+      "sha256": "8635058f621947c99788831f65176952dbeda4891ae9c0702e457c21d8a87aca"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00119.jpg",
+      "sha256": "e9e7e15c8041e90cba3896e6bcb0030cd50c3e2e94d56b47f9b034377f9a4681"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00463.jpg",
+      "sha256": "c43996a2af13f88fc2018f7e972f958331f9500bb6f4f6b623e00a74874a2727"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00067.jpg",
+      "sha256": "f6ac05d3e7345a5c82c8c23607bef969679ad7469b541c3a2c009cf16ec43ed4"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00327.jpg",
+      "sha256": "e18ab11fdf56cdda67154f0ab47452eab7e9c3e27cd065d60283dad1f14cff62"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00330.jpg",
+      "sha256": "67531670bef64036bb04338062094c1490fdcd16bd253e4c91b7a50cc8f1c08b"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00143.jpg",
+      "sha256": "b9a18cc497b26a841845ae7c8a1de755b6abeda0f0265baf09f5fa3497338f81"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00387.jpg",
+      "sha256": "a5f7cd61fefc9529c158cbbf02cbcd34092f9d02d9616e53c1a0c83987f959d9"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00382.jpg",
+      "sha256": "68b1a1a9d93c73b7fe76fb965cf25edd2d3d67c0ad12a0dadc408502a72b066b"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00103.jpg",
+      "sha256": "52e1edc8ab465648a188c94622a399b72b01819d1d4c49e6632f83bf52553ab7"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00089.jpg",
+      "sha256": "46511edfbacd2a8ce3f8022622bdcd3a8c17929daca83adc5445d37c8d23c9ad"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00150.jpg",
+      "sha256": "3e029b9cd2963e435dbd3855f0b010563a0ecfacb5aef6726d4c2712aa9a95cf"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00450.jpg",
+      "sha256": "b5ba3a4313bf577a6c019e7d2279bb3b3e16c110bffed340caa161d7592c35c8"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00082.jpg",
+      "sha256": "26abd70acc94a7fcf43d91bf82f353a1a498c3e2afe4570173f912cdc3381226"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00378.jpg",
+      "sha256": "5a4ee8aa605252e52717c0f155e63548fac705f307d9aeb6ede9664b28912425"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00373.jpg",
+      "sha256": "541096510b10afafe74934ef4b13d1e4219018dade0971fa67efd2401b3e01b2"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00339.jpg",
+      "sha256": "98394d01a72f8e6ab28e08ff59a2b91e8426e61895001d3e41d277b8adc980f1"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00162.jpg",
+      "sha256": "34d2e3e10f0f1a9ae58479bfe604d584210c4ec0027475b24b81ac86b03b02f3"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00370.jpg",
+      "sha256": "1c84d4dfc42080e4b2e2aaa820aac65ea94ba89545c8e2ae14d31e8e83ac8785"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00424.jpg",
+      "sha256": "fb2f17deb374d5fffbef3d186ecb8cb26df8edb313d3c8c9dcb8316aa1858499"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00035.jpg",
+      "sha256": "f20d31e97a308fe7c21e6ee4accd2d2f3b00c6f76cb48aa165ad494706d0d8ce"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00023.jpg",
+      "sha256": "c39c9ab0e39b12ffbccf2e23b4d7c65675c403ab5ec485e5a2c865761e76fe70"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00008.jpg",
+      "sha256": "0ba29e32896510c909f04b7ea32b7a84b269f23c33342186fc3c083ddfefe7e5"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00137.jpg",
+      "sha256": "e7c817cdbf8067fdc67c6a7cab28988de75f9b8526f0d797b8ccbf17f0523f47"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00472.jpg",
+      "sha256": "2fbc553e1862f261c9753b013623a7abff924ebf34872a88b7e92d7d49349cee"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00132.jpg",
+      "sha256": "c98b29ff9da71dd00e5ea105baf57f9347550b6a4458039363ad1cef2cc6b329"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00002.jpg",
+      "sha256": "97dc37a269b19058c586f7321a158e9161f63a4028856fd9b92de5bc76ebf4db"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00341.jpg",
+      "sha256": "a3bd0fde4664f16335e258825b1b71dd09df50ba4f128f57c152c392012dc713"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00413.jpg",
+      "sha256": "625cb5c9a2263f962b5b400e4a62a3afde1cf004702f792067c1f20a76beb564"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00045.jpg",
+      "sha256": "c47ce1137fc92ed0f5b353226e31525688117fee4a5c356440429c85a8e8c59d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00044.jpg",
+      "sha256": "c1949ed1e94f92dbc2bb438b1692b2f6247fb75c34c659ae1dbfe149d8a3294c"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00125.jpg",
+      "sha256": "371dd7da3d2886402ab29c4c122abfb765721a42b16893c9c4910378a1565d8b"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00136.jpg",
+      "sha256": "f96b534f71ca5a06f1f2d0112c89a1e4ff4006e139259a0bb7d31cf4e8057c74"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00355.jpg",
+      "sha256": "9d2a66b161e8a1c0c39cbd86b404a94321a1c4c03c9a9280e385363dc44d5978"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00399.jpg",
+      "sha256": "37342a8a08ed43d13b628b5991e8baf3e8d768e9ac64081c2aa1c269bd8c609a"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00462.jpg",
+      "sha256": "44e441d8fd8839a3d4556dc81e57b2cb2445211a9b721b52ada391e01cf2f859"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00440.jpg",
+      "sha256": "a4660409e652d8de79bb6b0cfd2333da4f68cd17d7e6b5bc6e942ceaef98bbc0"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00304.jpg",
+      "sha256": "08192fac2996c0a66b58f6f70b6b6ed54b218095b5de39db7be6daf6518a4ee4"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00451.jpg",
+      "sha256": "d4bd8ac0c59d62477913d73a28447206bdd12f7a2d884a0f046eb48ad4ec31b5"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00059.jpg",
+      "sha256": "a0a353cc45f5843a522b1822ef293fedbfe7681f7bd0e6affb81c15b5cb0a1ef"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00113.jpg",
+      "sha256": "53dc0c845645c03005228db4ac4518dd31c3f692c057f942a56c5f9353ff950d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00392.jpg",
+      "sha256": "fa67b05a65fa4a3207657ad2b7a1bdc2669d84888579bb53144acb8e79414deb"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00363.jpg",
+      "sha256": "8276507fc014c13a36e03a183efdbf4eb62ccacacc8407a4da9a20c651685d49"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00432.jpg",
+      "sha256": "bfd6c858d9032fbaf99cf7ae8ebb7ce3e0f0204c6638edeabd1f1a5434a2290a"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00302.jpg",
+      "sha256": "183caf99703100a2ed51095f4d262df29e920c2450e44c96f3b4bffec1fd2ab2"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00389.jpg",
+      "sha256": "1b33850d0dcb73bd7b1c8bbc310b2d4917318ab6fde11711cfc128889b5d96ce"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00398.jpg",
+      "sha256": "eb1459dfcdf903be1dbccfdd16e24a846b6e1f02cd690d8cd0ab9850d6cdb98d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00061.jpg",
+      "sha256": "20a8c7befa183def2127e02850f24decc3b92928eb812b28801b3d67388bd746"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00058.jpg",
+      "sha256": "e5d3ba28ca2511f8f1e03072fc2cb8f71e9a99db5f500e5f30b635ff49089638"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00145.jpg",
+      "sha256": "5cda7c7930d3e4677d126dac967a4319a2d50136df3f63110d0377480e066fbf"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00427.jpg",
+      "sha256": "b6ae0c6c0ec92d8b06aa7cca51a57f9f1b6b079a93e8e5067b64c1b82f135ae4"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00464.jpg",
+      "sha256": "3368bf9f9c5a2e2ecf57ffefc9c968fed10e336e6fcd3ca5a21c7d847a075e1d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00031.jpg",
+      "sha256": "ce33789074eedf90d87103a37801568843859c7aa55afcf5999553bc10ce49dd"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00018.jpg",
+      "sha256": "1420685ccf77fdcde729bfa4d1ff0fb34b54fb1d2d659b25bb29e40afaf15a63"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00406.jpg",
+      "sha256": "8db6a2041991fdcd06579b07441bf071998077061dcac8b923697ff432a42bcf"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00411.jpg",
+      "sha256": "30d6ff806adfca3b825c42bc8eab57d59cbfda8dd68129068c1c688380e9a7ea"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00152.jpg",
+      "sha256": "9a0fa83dfa5275e5d7a9eb27772810206e88a97107291023723f98ffacbbc56b"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00336.jpg",
+      "sha256": "297bd6e993d00c75758eb3efcdd45e5278f75a059df6b22e87f8c30d3fec96a8"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00397.jpg",
+      "sha256": "dd643aeff22fc75127705c53ff6b99aebef19511273b98f7a129df40dfd5664b"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00447.jpg",
+      "sha256": "083c2db14acdb574c70a932b7d4388129164275f1c9fde20e0b6c895e0713065"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00300.jpg",
+      "sha256": "4dc8edd6da9ae38ad4b80efa380bc1a9530d64aa8888990025840c29d4145598"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00086.jpg",
+      "sha256": "aa04308c4eeb8cbfd1219c19bf2aa5e3de1501fa6a16865a96d2ea63fb34946b"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00000.jpg",
+      "sha256": "6c3236655ae741c1c31872cd2e1186f6897e1516e841c777833e1ae954514116"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00096.jpg",
+      "sha256": "9cbde7d78ce6a0adc9b0099a23be0e404c14107bb73de918a3573765eb0cd7f5"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00072.jpg",
+      "sha256": "98ac1b33084924217beefc28734214315fcee99d2dedc28de34a25917cb4908d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00299.jpg",
+      "sha256": "6b8f7553272977ee0365e6a417d79c9ab541ce9fb26fe014980731eb251bbf0c"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00386.jpg",
+      "sha256": "40cd452792cc28a1d81e1ae05eda4dfaef5c83332f148d8c9987d28303d8bd14"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00352.jpg",
+      "sha256": "97a70cd556c127df30f7b772a50eb777cde95d3457b434d71be3ac31cf1a9e04"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00166.jpg",
+      "sha256": "3fae16eac6720e74cc85d5fb424494c0f1970e4c92d0069ac57bee17751690f8"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00420.jpg",
+      "sha256": "24fbfed1596a42367389e7fb1869d858fb6e70e880359b167d48e6a7f2c99650"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00030.jpg",
+      "sha256": "f03d2c991d8b5b817146949c4f4d62a6dc346c678b8e7e3e6e752745e4b5dcfa"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00348.jpg",
+      "sha256": "e12fcf31aec696f9e571788dc6183bfc5406b2a953dd5bf6a47dc0fa07b15fcc"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00065.jpg",
+      "sha256": "0afa8b0ed49c908b62eaf586c5742d74ca420d761c8c9cb5312df06624422a97"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00415.jpg",
+      "sha256": "d6e6bca91f527de30cb312779242d6421c743a9fd9a62e1d18942486e3627c5d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00095.jpg",
+      "sha256": "62cf9b0a2d139c76c7736050e4d2b3310133087abea2362ee30d8cad2304fa1d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00317.jpg",
+      "sha256": "fe635f374cb04af51eff56e83a8290bf65291531376d5b9df1c276420a083c73"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00135.jpg",
+      "sha256": "76b3260e1c75bd3c7f8a84088248d3894a996d40e895f747d55fd412bace4314"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00396.jpg",
+      "sha256": "6cb2e264c387dbb0705c807179628dd0fadb7d64c301e090e7d22429396cc751"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00416.jpg",
+      "sha256": "705c30acee870952c1c31f6be9e2ca126eb2fcca5eded59767971c9d396b545a"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00393.jpg",
+      "sha256": "0b48eac3cad3b1e5ca0a4435d973c009a49d8dfd7f1c7d282491570f352632de"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00324.jpg",
+      "sha256": "71c110b81e527d669b5db06b47a89c48692ed145afa9df93c81a5bc012d8c15f"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00060.jpg",
+      "sha256": "89a3eec5da4aebd985cedab3f10c1644febdde4a521178e5b532194087879b85"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00069.jpg",
+      "sha256": "a9b702d9ad1f726f2fa20903aba86365b36560f22d0d203a4d26a83804cbce88"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00077.jpg",
+      "sha256": "9f978ad563f8d8d4297291d0625db9dbda866d81499342bae760d7ac8c188d34"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00120.jpg",
+      "sha256": "2cec6e8f558f0d6722f729475ec383587883c8f8a2c0d9cb15396adce9a2e76c"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00042.jpg",
+      "sha256": "f4685e40ca6df10564833a29b6ffe8bc02f5704b2a7334e7dd6a01eb41b009c0"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00130.jpg",
+      "sha256": "a3bdca15994c21ca8d4bee83c930b1f3d8768f4c7853cdf224cd5a060129b563"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00437.jpg",
+      "sha256": "86b7e2bcbebbd0858cb3e00b0d09eccda12aedfb4dcff91e8cd74811d63d77a5"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00362.jpg",
+      "sha256": "1da6bb4a2826ed24bbb457fb7811c775181bb2ce9dd9f2458ec6ece58547cf8b"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00449.jpg",
+      "sha256": "5afc2564e9aa6ca5b4779dc1bfc0a9fa1fe0f0b8579be61d48b9fbaff5275590"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00461.jpg",
+      "sha256": "f74bd2d6159a8422e35781ef3ac6429783f9c40c3d28629dd48f6bb7d2c39497"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00080.jpg",
+      "sha256": "65ba0ea50d53fb5efaf8652c004f9d6301fc5ccc1123b3574438d99133f74ab1"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00353.jpg",
+      "sha256": "b87e29efddfde886ad218c5212565ec450017610a4f9d732f6c4893ee619f018"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00033.jpg",
+      "sha256": "dcae86716f0a53cbf950a83bf4e2c107d46dca60e35a9afb54868862b417c718"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00377.jpg",
+      "sha256": "9a6f5a3fee4e9a0079906a9718921cb9770595838567a70d3cd79994966829b7"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00301.jpg",
+      "sha256": "4e565778038172a7f81e5f37b80095d6dcdb7c46ec45bd20abe0af4835728a55"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00460.jpg",
+      "sha256": "a83ae7a850311a18907081028aa7da34d055920decf20d9756ee94e1ba731613"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00455.jpg",
+      "sha256": "4a3e57427614e0a577504cb9a80d063f82b562d228d1135eace3fe085c511a72"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00158.jpg",
+      "sha256": "a008982d310af63d9e6e3618fc7b796f9634cb7b69fa76a74b8e9c319f3442ae"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00311.jpg",
+      "sha256": "756a4b67cd01f01e063e9bc39ae72b466bad81858edf13cc3656f2973f7ffc1c"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00294.jpg",
+      "sha256": "3830874f21bd44e3b2f1e22063faa0267e7148c99a1ce43324e23f73e16bb2ae"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00062.jpg",
+      "sha256": "e5d21bf1d2a5f849a96b476f6fcfd43a7acfe56477028ea19fe9917107705eca"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00351.jpg",
+      "sha256": "98b5ee675b05f5387f1edfd1538573df7fd0706b1863970882d0c583d9b5ad9c"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00039.jpg",
+      "sha256": "0b1d628c4e928ce35ed4ca3cd6593092b13a27c75cf86e0fd64b8b9b046b3396"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00298.jpg",
+      "sha256": "7374b97fb5c0633618825eb1c9e85eedd7005ee7f0ebee94fb86e5e3410c36de"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00379.jpg",
+      "sha256": "6b7192e39382cc9050166b7ab5e2984dd19bae853132cf884a2ebc301475ae47"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00046.jpg",
+      "sha256": "237f03ea951144aeae5dbddcd30b2512d6672b15a1c6a1c104c929d3bd1d1f37"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00170.jpg",
+      "sha256": "184c8a34aaefb48ef9c4de46c93e7d675d5fbc8ddddbb9ebf35e4f1e39d8b5ce"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00074.jpg",
+      "sha256": "ecd5287f935ed89dbbe2995737e8f979e26d4b8bfda1a9c26a6f12f5b3755e63"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00323.jpg",
+      "sha256": "7ef88e897e18e106086d7a2dbbd012c9c711c9abb0ce6a7e0a20101f0269623e"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00408.jpg",
+      "sha256": "c35480ad5b0cb5a5dd14df82541be607fab7d15908aada762ef0a5836fac2969"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00425.jpg",
+      "sha256": "3f190120cd200bfbe3ac770ecfde1c8af313e8f8ff3e5c5c76e6629ab2787880"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00092.jpg",
+      "sha256": "b6836fa9a7239891ad40c55eb1525836788ef58c52ab66ba8607ead048d3e33f"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00106.jpg",
+      "sha256": "e427519fec1e656419de0f42cab822d9698ad644f919d4fcd43331acea102a99"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00064.jpg",
+      "sha256": "b25ea67bfef34ff1dcd6482a55217e58c1749503e909a7408eb2dbf7633f9802"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00138.jpg",
+      "sha256": "cc46a3d8d51efe10858adb1ac8746462004093c5e5291aa3ca2d8b07922a9ff6"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00110.jpg",
+      "sha256": "0e4a59c252fcf3def0be5718f9f1312d037e62b7abe42daf78a1e019f7fd0375"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00020.jpg",
+      "sha256": "87ad17379e6e51124bfd62c7338da69ad9c1e1fcaa738c025e6002dc8c845b14"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00347.jpg",
+      "sha256": "a3bfb0b08aa74d4baea1f33c4afda5ab9c9ff1a4f70480bcec8d68c75768b633"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00048.jpg",
+      "sha256": "6f27f18f922d456085316689db5f93889c046111cf6378212500aa331d33640b"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00104.jpg",
+      "sha256": "51ae22cc19855443a242103f5cdef5771628f77d94e59c7e5f0e943045f4a9db"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00131.jpg",
+      "sha256": "009f863c5fe4061773d36faa9ffd11b7c40f738ce326d778d4da7943d5e6b092"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00019.jpg",
+      "sha256": "69f23bb7e5ac6f3460c72e40d60b0b3f50df8a7683ccdd39be46079a2d8fbbc7"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00335.jpg",
+      "sha256": "1ba7f949c3da37db812ede8d2186ca76354940ce4dfc8164c84409af69af5315"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00168.jpg",
+      "sha256": "730ad9b8afe37349df61d250463e7984bd2ec5d748b15775a527ae05a60ab7a9"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00414.jpg",
+      "sha256": "f757e815241f85f9afb523dd58f51b096a500b4ddd78c0adcf2beed316cba068"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00458.jpg",
+      "sha256": "fd6f0009d145e6eed2a19e62703fcf40f24ce7f47f793f2622c918d6b5b992b6"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00325.jpg",
+      "sha256": "7a60a907c086771a02b8dc1d9b698f1b0dfe47c7c7564c943bff2447ddd00e1e"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00101.jpg",
+      "sha256": "ef296f3a63b891f636bae75880f6f92027c15ca48aeb573240201cd981f04693"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00310.jpg",
+      "sha256": "90a72bdf7cc7cbdd5715217f778abf142810462fe48cd40f0afd3f15eff3e647"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00417.jpg",
+      "sha256": "c9fd5a5b65793fc4577f5a4794c05c0411a4d0b1e0a335afe6b8832fc7d5b65e"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00314.jpg",
+      "sha256": "753cacc6dc301b40e6826c8b27fce627bd59e441b9db6c47c06834bfef72cf6d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00313.jpg",
+      "sha256": "701ea1b00b9dc04c225d2b4bd6ea8486c43eb9ac71daf4c807ca8849ce6e3b5e"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00438.jpg",
+      "sha256": "a850cfe39cc49b0b88146d79eca6d9aa4a72bf031b35c25c40c7d7792c91736a"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00148.jpg",
+      "sha256": "c8094a013eea6071e6fcf6fe76f3c1e6cab0f86b8e9a3028551dccab9b8084ff"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00307.jpg",
+      "sha256": "63b0bd66575bf69624050da0ede66b2b1849df68fa65b27160740e438ce0ce85"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00354.jpg",
+      "sha256": "2d43086559dede81d1c124b2325ed4d2dfed1f278f5cf5eec855b7a44df926d9"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00371.jpg",
+      "sha256": "7c69dd5748d163b7df991c1eeadcb9d46ae79db54e561f2e7ef588cff47ebf01"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00063.jpg",
+      "sha256": "1a36664055b47d2bfba734692bbd74aa6333601a12dae612eed0e29dc9fba0af"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00027.jpg",
+      "sha256": "d8ab56dbd329fffcb8d14a80069527b2cdc7351ff597af9e093134e3fec44947"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00297.jpg",
+      "sha256": "553be3330cc486dae63febbd71f4da39271511d35ef03a9b2ba387d3dde62ea7"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00097.jpg",
+      "sha256": "993270eb6be26e272536fd827dcfdb0e48d478d2c0d94b460f8bda873d990424"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00375.jpg",
+      "sha256": "5bdcf97eac748c47d99ae51db2038ae397516df8dd84558ff20816df09f55fc2"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00446.jpg",
+      "sha256": "c88eeecadb5b7fafe8d87f25e6d15c1573037b89ebbe1eae93e9231029fabc5a"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00050.jpg",
+      "sha256": "8ebf147b5a057611c1704ad1fc0c59cfada3320081a190e08ad4ac12cff5a88d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00041.jpg",
+      "sha256": "f54f827d4ee2144868a696a2858cd6ff935161a0278d1b0d4854682787305cd6"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00098.jpg",
+      "sha256": "8328315fd7f7716bca42e06d69ebc7a8b7caade688f7a11aede384d5c22bb938"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00334.jpg",
+      "sha256": "9fbec710e7ee48288e687fe81df9f63d7fbcdc7ab7a7b2825d4f8cbdeeb852aa"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00388.jpg",
+      "sha256": "72258688e11d332127e2cc94bc3df675729bdd20da45f2a269cb5930b79680b1"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00053.jpg",
+      "sha256": "d470647d0b6917f923b50b7a2198bb98539878cc0ef4763295ad6c6962a01557"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00343.jpg",
+      "sha256": "90474a6187ac845559235ccf65f469658125d7aeabaf9b09becbf95b1e996b9d"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00448.jpg",
+      "sha256": "fa86dec1d3a5ea9916754461e5650b2d56b0076f71f985a20a9ed6ba4d9c5cab"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00017.jpg",
+      "sha256": "93f7339231483e7dd705b4a5171bb7ef28573f635d63c3dfe1939bd5ca2e6ea2"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00456.jpg",
+      "sha256": "92cdcb34febc7ba0702e733ac39ed54bd78409c9c11bd91361cecbd5007af63f"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00369.jpg",
+      "sha256": "aa69fa16f810d2621a56fd341cb5b74a15fa1b43996f0317d04fffc8133ace1a"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00151.jpg",
+      "sha256": "99644fdf9f0a7999219421e196cdc6a53f63c6879ceece8c34972beef0125be6"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00320.jpg",
+      "sha256": "eb5006f11306ce01dc2db585789380e411bccc364dff7bcb6781336b668988f2"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00422.jpg",
+      "sha256": "48bcc9e7f528b0d79fd7c7cf93a2f33a52043844efd4bc7bf683910930c15ee4"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00338.jpg",
+      "sha256": "676fec01097a9dfe30de74df87ae2458b3aa962f83b8cffc7137387e9acd1690"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00015.jpg",
+      "sha256": "da1543a9563e5b7cd648b57597a4ff2ff85ba8fe51656f6b292f2e578b97a8e5"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\rdd_00421.jpg",
+      "sha256": "e481bfc06756f5412912ec17ae44c55c715dc30e12a960aa9654adc667b5d2ad"
+    },
+    {
+      "path": "data\\retrained\\images\\train\\traffic_00070.jpg",
+      "sha256": "3abb4802d4875f5837b6f39e0dd1a9be48f93d6f0a9ad606e096fa5308ccdb31"
+    }
+  ]
+}
